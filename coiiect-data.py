@@ -3,14 +3,13 @@ import os
 import mediapipe as mp
 import numpy as np
 
-# غيري هذا الاسم في كل مرة حسب الإشارة
-gesture_name = "thumbs-up"  # 👈 غيّريه إلى: open_hand / fist / thumbs_up / peace ...
 
-# المسار لحفظ البيانات
+gesture_name = "thumbs-up"  
+
 save_dir = f"hand_gesture_dataset/{gesture_name}"
 os.makedirs(save_dir, exist_ok=True)
 
-# إعداد mediapipe
+
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False,
                        max_num_hands=1,
@@ -33,12 +32,12 @@ while True:
         for hand_landmarks in result.multi_hand_landmarks:
             mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-            # نحول الـ landmarks إلى مصفوفة
+         
             landmarks = []
             for lm in hand_landmarks.landmark:
                 landmarks.extend([lm.x, lm.y, lm.z])
 
-            # نحفظ البيانات كـ ملف .npy
+        
             np.save(os.path.join(save_dir, f'{counter}.npy'), np.array(landmarks))
             counter += 1
 
