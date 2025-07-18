@@ -12,7 +12,7 @@ Hand Gesture Recognition
 
 - 👍 Thumbs up
 - ✌️ Peace
-- 👊 Fist
+- 👊 Fist 
 -👌oksign
 
 الأدوات والتقنيات المستخدمة
